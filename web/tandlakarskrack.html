@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tandläkarskräck – Åstorp Tandläkare Centrum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="info-panel.css">
+    <link rel="stylesheet" href="tandlakarskrack.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-placeholder"></div>
+
+<main class="tandlakarskrack-layout">
+    <section class="tandlakarskrack-content">
+        <h1>Tandläkarskräck – Du är inte ensam</h1>
+        <p>Tandläkarskräck, eller odontofobi, är ett verkligt och vanligt problem som påverkar upp till 10–15 % av befolkningen <span class="ref">(Folkhälsomyndigheten, 2022)</span>. Det kan handla om allt från mild oro inför ett tandläkarbesök till total fobi som hindrar en person från att söka nödvändig vård.</p>
+
+        <h2>Varför uppstår tandläkarskräck?</h2>
+        <p>Vanliga orsaker är tidigare negativa erfarenheter, rädsla för smärta, kontrollförlust, nålar eller ljudet av borrar. Studier visar att majoriteten av de som lider av tandläkarskräck har haft ett tidigare trauma från barndomen <span class="ref">(Armfield et al., 2007)</span>.</p>
+
+        <h2>Konsekvenser av att undvika tandläkarbesök</h2>
+        <p>Att undvika tandläkaren kan leda till allvarliga problem: tandlossning, infektioner, dålig andedräkt och kronisk smärta. Dessutom kan det påverka självkänslan och det sociala livet. Ju längre man väntar, desto mer omfattande och dyrare blir ofta behandlingen.</p>
+
+        <h2>Vad säger forskningen?</h2>
+        <p>Enligt Socialstyrelsen är kognitiv beteendeterapi (KBT) och gradvis exponering effektiva behandlingsmetoder. Många tandläkarkliniker arbetar idag med särskilda metoder och miljöer för att minska stressen: lugn musik, doftfria rum, distraktionstekniker och avslappningsövningar.</p>
+
+        <h2>Vår metod – Trygghet i fokus</h2>
+        <p>Hos oss på Åstorp Tandläkare Centrum möter du alltid en empatisk och pedagogisk tandläkare. Vi börjar alltid med ett samtal – utan behandling – där du får uttrycka dina rädslor och önskemål. Vi tar det i din takt.</p>
+
+        <ul>
+            <li>Första besöket kan vara helt behandlingsfritt</li>
+            <li>Vi förklarar varje steg innan vi gör något</li>
+            <li>Du kan alltid be om paus</li>
+            <li>Vi använder skonsamma tekniker och modern utrustning</li>
+        </ul>
+
+        <h2>Tips för dig som är rädd:</h2>
+        <ol>
+            <li>Boka ett samtal – inte behandling</li>
+            <li>Berätta direkt om din rädsla</li>
+            <li>Ta med en vän som stöd</li>
+            <li>Lyssna på musik eller podd under besöket</li>
+            <li>Prova mindfulness eller andningsövningar före ditt besök</li>
+        </ol>
+
+        <h2>Du förtjänar ett friskt leende – utan rädsla</h2>
+        <p>Det är fullt möjligt att övervinna sin tandläkarskräck. Det kräver bara rätt miljö, förståelse och ett första steg. Våga ta kontakt – vi finns här för att hjälpa dig, inte döma dig.</p>
+
+        <p class="ref">Källor: Folkhälsomyndigheten 2022, Armfield et al. 2007, Socialstyrelsen 2021.</p>
+    </section>
+
+    <!-- Informationspanel -->
+    <aside id="info-panel-placeholder"></aside>
+</main>
+
+<section class="reviews-slider">
+    <h2>Patientberättelser om tandläkarskräck</h2>
+    <div class="slider-container">
+        <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+
+        <div class="review-slide active">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">“Jag hade undvikit tandläkaren i över tio år på grund av min rädsla. Men personalen här tog verkligen tiden att lyssna, förklara allt och gav mig full kontroll. Jag är så tacksam!”</p>
+            <p class="review-name">– Elin R.</p>
+        </div>
+
+        <div class="review-slide">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">“Första gången jag inte behövde ta lugnande inför ett besök. Det säger allt! Miljön, bemötandet, och hur de respekterade min oro var fantastiskt.”</p>
+            <p class="review-name">– Daniel W.</p>
+        </div>
+
+        <div class="review-slide">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">“Jag har haft odontofobi sedan barndomen. Med hjälp av teamet på Åstorp kunde jag ta steget att göra en undersökning – utan panik. Nu har jag till och med gjort en behandling!”</p>
+            <p class="review-name">– Johanna L.</p>
+        </div>
+
+        <div class="review-slide">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">“Tack vare den respekt och trygghet jag fick här har jag övervunnit min tandläkarskräck. Det är inte bara tandvård – det är en omstart för livet.”</p>
+            <p class="review-name">– Henrik T.</p>
+        </div>
+
+        <div class="review-slide">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">“Det första jag såg när jag kom in var det stora akvariet i väntrummet. Jag vet att det kanske låter konstigt, men att bara sitta och titta på fiskarna gav mig ett lugn jag aldrig trodde jag skulle känna hos en tandläkare. Det hjälpte mig att samla mod inför besöket.”</p>
+            <p class="review-name">– Sofia N.</p>
+        </div>
+
+
+        <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Laddar info-panel -->
+<script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    fetch("info-panel.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("info-panel-placeholder").innerHTML = data);
+</script>
+
+
+
+</body>
+</html>

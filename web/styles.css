@@ -1,0 +1,687 @@
+/* === ÅSTORP TANDLÄKARE CENTRUM – HUVUDSTILFIL === */
+
+/* ======= GRUNDSTIL ======= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* ======= HEADER OCH MENY ======= */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ======= HERO-SEKTION ======= */
+.hero {
+    background-image: url('./img/tandvard.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.button {
+    background-color: #007ACC;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005f99;
+}
+
+/* ======= BEHANDLINGAR ======= */
+.treatment-intro {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+}
+
+.treatments {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.treatments h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #003366;
+}
+
+.treatment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.treatment-intro-section {
+  background-color: #ffffff;
+  padding: 50px 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+.treatment-intro-text p {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #003366;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.treatment-divider-wave {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.treatment-divider-wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Kortstruktur med hover-effekt och rubrik */
+.treatment {
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+    height: 280px; /* maxhöjd för alla kort */
+}
+
+.treatment-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.treatment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Rubrik som alltid visas */
+.treatment .always-visible-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Hover-text-overlay */
+.treatment .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 20px 15px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    font-size: 0.9em;
+    line-height: 1.5;
+    z-index: 1;
+}
+
+.treatment:hover .overlay {
+    transform: translateY(0);
+}
+
+.treatment:hover img {
+    transform: scale(1.05);
+}
+
+/* ======= OM OSS ======= */
+.about {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.about h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-text li {
+    margin-bottom: 10px;
+}
+
+.about-map {
+    flex: 1;
+    min-width: 500px;
+}
+
+/* ======= FOOTER ======= */
+.site-footer {
+    background-color: #003366;
+    color: white;
+    padding: 40px 20px 20px;
+    font-size: 0.95em;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-column a {
+    color: #aad6ff;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #446;
+    padding-top: 10px;
+    font-size: 0.85em;
+    color: #ccc;
+}
+
+/* ======= VARFÖR ÅSTORP-SEKTION ======= */
+.why-astorp {
+    background-color: #eef4fb;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.why-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.why-astorp h2 {
+    color: #003366;
+    font-size: 2.4em;
+    margin-bottom: 35px;
+}
+
+.why-astorp p {
+    font-size: 1.15em;
+    line-height: 1.9;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* ======= SLIDER-REVIEWS ======= */
+.reviews-slider {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.reviews-slider h2 {
+    font-size: 2em;
+    color: #003366;
+    margin-bottom: 40px;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.review-slide {
+    display: none;
+    background-color: #f4f8fc;
+    border-left: 6px solid #007ACC;
+    padding: 30px 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-slide.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.review-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 15px 0;
+}
+
+.review-name {
+    font-weight: bold;
+    color: #007ACC;
+    font-size: 1em;
+}
+
+.stars {
+    font-size: 1.5em;
+    color: #FFA500;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    color: #007ACC;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.slider-btn:hover {
+    color: #005a99;
+}
+
+.slider-btn.prev {
+    left: 0;
+}
+
+.slider-btn.next {
+    right: 0;
+}
+
+/* ======= MOBILANPASSNING (GLOBAL) ======= */
+@media (max-width: 760px) {
+  .hero-content {
+    padding: 30px 20px;
+    font-size: 1em;
+  }
+
+  .treatment-grid {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .review-slide {
+    padding: 25px 15px;
+  }
+
+  .why-container,
+  .contact-form {
+    padding: 0 10px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-column {
+    min-width: 100%;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+
+  .hero {
+    padding: 80px 15px;
+  }
+
+  h1, h2 {
+    font-size: 1.5em;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1em;
+  }
+}
+
+/* ======= NY HEADERSTRUKTUR ======= */
+.custom-header {
+  background-color: #003366;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.header-left .logo {
+  height: 200px;
+  max-width: 220px;
+}
+
+.header-center {
+  flex-grow: 1;
+  margin-top: 150px; /* ⬅️ begränsar hur bred menyblocket får vara */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-center .nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.header-center .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-center .nav-links li a:hover {
+  text-decoration: underline;
+}
+
+.header-right-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  padding-left: 10px;
+  min-width: 220px; /* ⬅️ tvingar ett minimum så den inte trycks bort */
+}
+
+
+.contact-box-vertical,
+.book-button-vertical {
+  background-color: #007ACC;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Hover-effekt på BOKA TID-knapp */
+.book-button-vertical:hover {
+  background-color: #005f99;
+}
+
+/* Hover-effekt på KONTAKTA OSS-box */
+.contact-box-vertical:hover {
+  background-color: #005f99;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .header-right-vertical {
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+.book-button-vertical:hover,
+.contact-box-vertical:hover {
+  background-color: #005f99;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+ }
+}
+
+/* Dropdown-meny */
+.nav-links .dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #003366;
+  padding: 10px 0;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  z-index: 1000;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #005f99;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Anpassning för mobil – döljer dropdown */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+  }
+}
+@media (max-width: 768px) {
+  .custom-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right-vertical {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .header-center .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-right-vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-button-vertical,
+  .contact-box-vertical {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background-color: #003366;
+  }
+
+  .dropdown-menu li a {
+    padding: 10px;
+    display: block;
+    text-align: center;
+  }
+}
+/* ======= MOBIL HAMBURGERMENY-FIX ======= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  padding: 10px;
+  background: none;
+  border: none;
+  margin-left: auto;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  display: block;
+  border-radius: 2px;
+}
+
+/* MOBIL-LÄGE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .nav-links {
+    display: none !important;  /* ← Tvinga bort visning */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 80px;
+    background-color: #003366;
+    padding-bottom: 20px;
+  }
+
+  .nav-links.show {
+    display: flex !important;  /* ← Visa vid toggle */
+  }
+
+  .header-center {
+    width: 100%;
+    justify-content: center;
+  }
+}

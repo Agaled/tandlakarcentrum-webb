@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakta oss – Åstorp Tandläkare Centrum</title>
+    <link rel="stylesheet" href="kontakt.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<div id="header-placeholder"></div>
+
+<section class="contact-section">
+    <h2>Kontakta oss</h2>
+
+    <div class="contact-intro">
+        <p>
+            Välkommen att kontakta oss! Har du frågor om våra behandlingar, önskar boka tid eller vill nå oss i något annat ärende?
+            Fyll i formuläret nedan – vi återkommer inom <strong>24 timmar</strong>.
+        </p>
+        <p class="emergency-note">
+            <strong>Observera:</strong> Vid akuta besvär är vi tillgängliga <strong>dygnet runt</strong>.
+            Ring oss direkt på <strong class="phone-number">073-520 41 86</strong>.
+        </p>
+    </div>
+
+
+    <form class="contact-form" id="kontaktForm">
+        <div class="form-group">
+            <label for="name">Namn</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Meddelande</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="button">Skicka meddelande</button>
+    </form>
+
+    <!-- Bekräftelsebox -->
+    <div id="form-bekraftelse" class="confirmation-box">
+        Tack för ditt meddelande! Vi kontaktar dig så snart vi kan.<br>
+        <strong>Vid akuta besvär finns vi tillgängliga 24/7 – ring <u>073-520 41 86</u>.</strong>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+</body>
+</html>

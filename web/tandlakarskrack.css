@@ -1,0 +1,54 @@
+/* === Layout för tandläkarskräck-sidan === */
+.tandlakarskrack-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px 20px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.tandlakarskrack-content {
+  flex: 1 1 700px;
+  color: #333;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.tandlakarskrack-content h1 {
+  font-size: 2em;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.tandlakarskrack-content h2 {
+  margin-top: 30px;
+  color: #003366;
+}
+
+.tandlakarskrack-content ul,
+.tandlakarskrack-content ol {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.tandlakarskrack-content .ref {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #777;
+}
+
+@media (max-width: 992px) {
+  .tandlakarskrack-layout {
+    flex-direction: column;
+  }
+
+  .tandlakarskrack-content {
+    padding: 0 10px;
+  }
+
+  .info-panel {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}

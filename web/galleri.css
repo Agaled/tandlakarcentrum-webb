@@ -1,0 +1,85 @@
+/* ====== Introduktion ====== */
+.gallery-intro {
+  max-width: 900px;
+  margin: 50px auto 30px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.gallery-intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.gallery-intro p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ====== Galleri ====== */
+.gallery-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto 80px auto;
+  padding: 0 20px;
+}
+
+.case h2 {
+  text-align: center;
+  color: #005080;
+  margin-bottom: 20px;
+}
+
+.image-pair {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.image-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.image-box:hover {
+  transform: scale(1.03);
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-box span {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* ====== Responsivitet ====== */
+@media (max-width: 768px) {
+  .image-pair {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-box {
+    width: 90%;
+  }
+}
