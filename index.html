@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lösenordsskydd – kommer upp direkt -->
+    <script>
+        const password = prompt("Ange lösenord för att besöka sidan:");
+        if (password !== "dittlösenord") {
+            document.body.innerHTML = "<h1>Åtkomst nekad</h1><p>Fel lösenord angivet.</p>";
+            throw new Error("Fel lösenord – laddning avbruten.");
+        }
+    </script>
     <title>Helsingborgs Tandläkare Centrum</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
@@ -10,15 +18,6 @@
 
 </head>
 
-<script>
-    const password = "mittlösenord"; // Byt ut detta
-    const userInput = prompt("Skriv in lösenord för att komma åt sidan:");
-
-    if (userInput !== password) {
-      alert("Fel lösenord.");
-      window.location.href = "https://google.com"; // eller annan extern sida
-    }
-</script>
 
 
 <body>
