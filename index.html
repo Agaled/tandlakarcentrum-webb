@@ -9,6 +9,18 @@
 
 
 </head>
+
+<script>
+    const password = "mittlösenord"; // Byt ut detta
+    const userInput = prompt("Skriv in lösenord för att komma åt sidan:");
+
+    if (userInput !== password) {
+      alert("Fel lösenord.");
+      window.location.href = "https://google.com"; // eller annan extern sida
+    }
+</script>
+
+
 <body>
 
 <div id="header-placeholder"></div>
