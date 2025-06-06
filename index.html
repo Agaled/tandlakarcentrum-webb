@@ -2,18 +2,22 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Lösenordsskydd – kommer upp direkt -->
     <script>
-        const password = prompt("Ange lösenord för att besöka sidan:");
-        if (password !== "Aassddww11") {
-            document.body.innerHTML = "<h1>Åtkomst nekad</h1><p>Fel lösenord angivet.</p>";
-            throw new Error("Fel lösenord – laddning avbruten.");
+        const correctPassword = "Aassddww11";
+        const entered = sessionStorage.getItem("authenticated");
+
+        if (!entered) {
+          const userInput = prompt("Skriv in lösenord för att fortsätta:");
+          if (userInput === correctPassword) {
+            sessionStorage.setItem("authenticated", "true");
+          } else {
+            window.location.href = "kirurgi.html";
+          }
         }
     </script>
-    <title>Helsingborgs Tandläkare Centrum</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 
 </head>
