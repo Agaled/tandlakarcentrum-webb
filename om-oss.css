@@ -1,0 +1,42 @@
+/* om-oss.css */
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-map {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-map iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* Mobilanpassning */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-map iframe {
+    height: 250px;
+  }
+
+  .about-text,
+  .about-map {
+    width: 100%;
+  }
+}
