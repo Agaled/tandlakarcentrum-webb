@@ -1,0 +1,63 @@
+/* ===== Behandlingssida – gemensam styling ===== */
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-content h1 {
+  font-size: 2.2em;
+  color: #003366;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.main-content h2 {
+  font-size: 1.4em;
+  color: #005080;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.main-content p {
+  margin-bottom: 15px;
+  font-size: 1.05em;
+}
+
+.main-content ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.main-content ul li {
+  margin-bottom: 10px;
+}
+
+.book-button {
+  display: inline-block;
+  background-color: #007ACC;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+  background-color: #005f99;
+}

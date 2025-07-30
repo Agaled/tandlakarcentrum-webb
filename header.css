@@ -1,0 +1,115 @@
+/* ===== HEADER DESIGN ===== */
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 50px;
+}
+
+.header-center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #003366;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007ACC;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 1001;
+}
+
+.dropdown-menu li {
+  padding: 6px 20px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Right panel */
+.header-right-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.contact-box-vertical {
+  font-weight: bold;
+  color: #003366;
+  font-size: 0.95rem;
+}
+
+.book-button-vertical {
+  background-color: #007ACC;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.book-button-vertical:hover {
+  background-color: #005f99;
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-center {
+    text-align: left;
+    margin-top: 15px;
+  }
+
+  .header-right-vertical {
+    align-items: center;
+    margin-top: 10px;
+  }
+}

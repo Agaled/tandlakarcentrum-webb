@@ -10,7 +10,9 @@
 <body>
 <header class="custom-header">
     <div class="header-left">
-        <img src="img/logo.png" alt="Logo" class="logo">
+        <a href="index.html">
+            <img src="img/logo.png" alt="Åstorp Tandläkare Centrum" class="logo" />
+        </a>
     </div>
 
     <div class="header-center">
@@ -20,12 +22,11 @@
             <span></span>
         </div>
 
-
         <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Hem</a></li>
 
-        <li><a href="index.html">Hem</a></li>
             <li class="dropdown">
-                <a href="index.html#behandlingar">Behandlingar</a>
+                <a href="#">Behandlingar ▾</a>
                 <ul class="dropdown-menu">
                     <li><a href="Akuttandvard.html">Akuttandvård</a></li>
                     <li><a href="Undersokning.html">Undersökning</a></li>
@@ -37,19 +38,26 @@
                     <li><a href="Kirurgi.html">Kirurgi</a></li>
                 </ul>
             </li>
+
             <li><a href="tandlakarskrack.html">Tandläkarskräck</a></li>
-            <li><a href="galleri.html">Galleri</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             <li><a href="om-oss.html">Om oss</a></li>
-
         </ul>
     </div>
 
     <div class="header-right-vertical">
-        <div class="contact-box-vertical">KONTAKTA OSS PÅ 073-520 41 86</div>
-        <a href="#" class="book-button-vertical">BOKA TID</a>
+        <div class="contact-box-vertical">📞 073-520 41 86</div>
+        <a href="kontakt.html" class="book-button-vertical">Boka tid</a>
     </div>
 </header>
+
+<script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+</script>
 
 
 </body>
