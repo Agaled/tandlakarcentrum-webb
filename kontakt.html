@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakta oss – Åstorp Tandläkare Centrum</title>
-    <link rel="stylesheet" href="kontakt.css">
+    <link rel="stylesheet" href="kontakt.css" />
     <script src="script.js" defer></script>
 </head>
-
 <body>
+
 <div id="header-placeholder"></div>
 
 <section class="contact-section">
@@ -25,16 +25,16 @@
         </p>
     </div>
 
-
-    <form class="contact-form" id="kontaktForm">
+    <!-- ✅ Kontaktformulär (AJAX-version) -->
+    <form id="kontakt-form" class="contact-form">
         <div class="form-group">
             <label for="name">Namn</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required />
         </div>
 
         <div class="form-group">
             <label for="email">E-post</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required />
         </div>
 
         <div class="form-group">
@@ -45,13 +45,48 @@
         <button type="submit" class="button">Skicka meddelande</button>
     </form>
 
-    <!-- Bekräftelsebox -->
-    <div id="form-bekraftelse" class="confirmation-box">
-        Tack för ditt meddelande! Vi kontaktar dig så snart vi kan.<br>
-        <strong>Vid akuta besvär finns vi tillgängliga 24/7 – ring <u>073-520 41 86</u>.</strong>
+    <!-- ✅ Bekräftelse (visas efter lyckat skick) -->
+    <div id="form-bekraftelse" class="confirmation-box" style="display: none;">
+        <p>Tack för ditt meddelande! Vi har tagit emot det och återkommer så snart vi kan.</p>
+        <p><strong>Vid akuta besvär – ring oss direkt på 073-520 41 86.</strong></p>
     </div>
 </section>
 
 <div id="footer-placeholder"></div>
+
+<!-- ✅ JS som skickar via Formspree -->
+<script>
+    const form = document.getElementById("kontakt-form");
+    const confirmationBox = document.getElementById("form-bekraftelse");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        const response = await fetch("https://formspree.io/f/mvgrggjo", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        });
+
+        if (response.ok) {
+          form.style.display = "none";
+          confirmationBox.style.display = "block";
+        } else {
+          alert("Något gick fel. Försök igen.");
+        }
+      } catch (error) {
+        alert("Kunde inte skicka meddelandet. Kontrollera din uppkoppling.");
+      }
+    });
+</script>
+
 </body>
 </html>
