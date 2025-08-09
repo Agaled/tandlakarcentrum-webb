@@ -1,0 +1,51 @@
+/* Hero – behåll din befintliga höjd om du har en i styles.css */
+.hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Lager med bakgrundsbilder */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Enskilda slides som korsfadas */
+.hero-bg .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 800ms ease-in-out;
+}
+
+.hero-bg .slide.active {
+  opacity: 1;
+}
+
+/* Diskret mörkt filter för bättre läsbarhet (kan justeras/ta bort) */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+}
+
+/* Din box ska ligga överst */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Mobilhöjd */
+@media (max-width: 768px) {
+  .hero { min-height: 360px; }
+}
