@@ -4,10 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Kirurgi – Åstorp Tandläkare Centrum</title>
+    <!-- Standard favicon (för de flesta webbläsare) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+
+    <!-- Apple (iOS, iPadOS) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+    <!-- Android/Chrome/Samsung -->
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/favicon.png">
+
+    <!-- (valfritt men bra för PWA / Android) -->
+    <link rel="manifest" href="site.webmanifest">
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="behandlingar.css" />
+
+    <link rel="stylesheet" href="announcement.css">
 </head>
 <body>
+<!-- Announcements Banner innan drift -->
+<div class="announcement-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        ℹ️ Åstorp Tandläkare Centrum öppnar den 6 oktober 2025. Vår bokningstjänst kommer att bli tillgänglig inom kort – vi ser fram emot att välkomna dig!
+    </marquee>
+</div>
 
 <div id="header-placeholder"></div>
 
@@ -44,7 +66,7 @@
     <h2>Du är i trygga händer</h2>
     <p>Vi vet att kirurgi kan kännas skrämmande. Därför bemöter vi dig alltid med lugn, respekt och tydlig information. Vårt mål är att du ska känna dig trygg från första mötet till efterkontrollen – oavsett ingreppets omfattning.</p>
 
-    <a href="kontakt.html" class="book-button">Boka kirurgisk bedömning</a>
+    <a href="bokning.html" class="book-button">Boka kirurgisk bedömning</a>
 </section>
 
 <div id="footer-placeholder"></div>

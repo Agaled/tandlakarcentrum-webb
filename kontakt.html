@@ -4,10 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakta oss – Åstorp Tandläkare Centrum</title>
+    <!-- Standard favicon (för de flesta webbläsare) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+
+    <!-- Apple (iOS, iPadOS) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+    <!-- Android/Chrome/Samsung -->
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/favicon.png">
+
+    <!-- (valfritt men bra för PWA / Android) -->
+    <link rel="manifest" href="site.webmanifest">
+
     <link rel="stylesheet" href="kontakt.css" />
     <script src="script.js" defer></script>
+
+    <link rel="stylesheet" href="announcement.css">
 </head>
 <body>
+
+<!-- Announcements Banner innan drift -->
+<div class="announcement-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        ℹ️ Åstorp Tandläkare Centrum öppnar den 6 oktober 2025. Vår bokningstjänst kommer att bli tillgänglig inom kort – vi ser fram emot att välkomna dig!
+    </marquee>
+</div>
 
 <div id="header-placeholder"></div>
 
@@ -21,7 +44,7 @@
         </p>
         <p class="emergency-note">
             <strong>Observera:</strong> Vid akuta besvär är vi tillgängliga <strong>dygnet runt</strong>.
-            Ring oss direkt på <strong class="phone-number">073-520 41 86</strong>.
+            Ring oss direkt på <strong class="phone-number">042-26 00 44</strong>.
         </p>
     </div>
 
@@ -48,7 +71,7 @@
     <!-- ✅ Bekräftelse (visas efter lyckat skick) -->
     <div id="form-bekraftelse" class="confirmation-box" style="display: none;">
         <p>Tack för ditt meddelande! Vi har tagit emot det och återkommer så snart vi kan.</p>
-        <p><strong>Vid akuta besvär – ring oss direkt på 073-520 41 86.</strong></p>
+        <p><strong>Vid akuta besvär – ring oss direkt på 042-26 00 44.</strong></p>
     </div>
 </section>
 

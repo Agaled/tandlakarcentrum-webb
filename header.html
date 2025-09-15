@@ -3,11 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Dentist",
+            "name": "Åstorp Tandläkare Centrum",
+            "url": "https://astorptandlakarecentrum.se",
+            "logo": "https://astorptandlakarecentrum.se/img/favicon.png",
+            "image": "https://astorptandlakarecentrum.se/img/favicon.png",
+            "telephone": "042-26 00 44",
+            "email": "info@astorptandlakarecentrum.se",
+            "address": {
+                "streetAddress": "Storgatan 20D",
+                "@type": "PostalAddress",
+                "addressLocality": "Åstorp",
+                "postalCode": "265 30",
+                "addressCountry": "SE"
+            },
+            "openingHours": "Mo-Fr 00:00-23:59",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61580167063307&mibextid=wwXIfr&rdid=0uqkgMYoQxGMp5H8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GFkFFtppz%2F%3Fmibextid%3DwwXIfr#",
+                "https://www.instagram.com/astorptandlakarecentrum?igsh=bHhjYjE0YnE0YmFp"
+            ]
+        }
+    </script>
+    <!-- SEO & Social Metadata -->
+    <meta name="description" content="Åstorp Tandläkare Centrum erbjuder trygg, modern och personlig tandvård för hela familjen. Vi skapar leenden för livet!">
+    <meta name="robots" content="index, follow">
 
-    <title>Title</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Open Graph (Facebook, LinkedIn, m.fl.) -->
+    <meta property="og:title" content="Åstorp Tandläkare Centrum | Vi skapar leenden för livet!">
+    <meta property="og:description" content="Din trygga tandvårdsklinik i hjärtat av Åstorp. Boka tid och upptäck modern och personlig tandvård för hela familjen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://astorptandlakarecentrum.se/">
+    <meta property="og:image" content="https://astorptandlakarecentrum.se/img/logoFlik.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Åstorp Tandläkare Centrum | Vi skapar leenden för livet!">
+    <meta name="twitter:description" content="Din trygga tandvårdsklinik i hjärtat av Åstorp. Modern, trygg och personlig tandvård för hela familjen.">
+    <meta name="twitter:image" content="https://astorptandlakarecentrum.se/img/logoFlik.png">
+
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js" defer></script>
+
 </head>
 <body>
+
+
+
 <header class="custom-header">
     <div class="header-left">
         <a href="index.html">
@@ -46,9 +93,10 @@
     </div>
 
     <div class="header-right-vertical">
-        <div class="contact-box-vertical">📞 073-520 41 86</div>
-        <a href="kontakt.html" class="book-button-vertical">Boka tid</a>
+        <a href="tel:042260044" class="contact-box-vertical">042-26 00 44</a>
+        <a href="bokning.html" class="book-button-vertical">Boka tid</a>
     </div>
+
 </header>
 
 <script>

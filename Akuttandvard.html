@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Akuttandvård – Åstorp Tandläkare Centrum</title>
+    <!-- Standard favicon (för de flesta webbläsare) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+
+    <!-- Apple (iOS, iPadOS) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+    <!-- Android/Chrome/Samsung -->
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/favicon.png">
+
+    <!-- (valfritt men bra för PWA / Android) -->
+    <link rel="manifest" href="site.webmanifest">
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="behandlingar.css" />
+    <link rel="stylesheet" href="announcement.css">
 </head>
 <body>
+<!-- Announcements Banner innan drift -->
+<div class="announcement-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        ℹ️ Åstorp Tandläkare Centrum öppnar den 6 oktober 2025. Vår bokningstjänst kommer att bli tillgänglig inom kort – vi ser fram emot att välkomna dig!
+    </marquee>
+</div>
 
 <div id="header-placeholder"></div>
 
@@ -33,8 +54,8 @@
     <p>Vi arbetar med den senaste utrustningen och gör alltid en noggrann bedömning innan vi inleder behandling. Ibland kan vi behandla direkt, ibland behöver vi stabilisera läget och planera vidare åtgärder.</p>
 
     <h2>Så här bokar du en akuttid</h2>
-    <p>Ring oss direkt på <strong><a href="tel:0735204186">073-520 41 86</a></strong> för snabbast möjliga hjälp. Du når oss dygnet runt. Vi reserverar dagligen akuttider i vårt schema och gör alltid vårt yttersta för att hjälpa dig samma dag.</p>
-    <a href="kontakt.html" class="book-button">Boka akuttid</a>
+    <p>Ring oss direkt på <strong><a href="tel:042-26 00 44">042-26 00 44</a></strong> för snabbast möjliga hjälp. Du når oss dygnet runt. Vi reserverar dagligen akuttider i vårt schema och gör alltid vårt yttersta för att hjälpa dig samma dag.</p>
+    <a href="bokning.html" class="book-button">Boka akuttid</a>
 
     <h2>Ingen ska behöva ha ont i onödan</h2>
     <p>Vår filosofi är enkel: ingen ska behöva leva med tandvärk. Oavsett om det gäller dig själv, ditt barn eller en äldre släkting – vi finns här när ni behöver oss som mest. Och du är alltid välkommen tillbaka för fortsatt vård, förebyggande kontroller eller långsiktig behandlingsplanering.</p>

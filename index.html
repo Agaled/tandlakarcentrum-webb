@@ -1,35 +1,210 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+
+    <style>
+        /* Justera värdena om din header/footer är högre/lägre */
+        #header-placeholder, .header-placeholder { min-height: 84px; }
+        #footer-placeholder, .footer-placeholder { min-height: 260px; }
+    </style>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="hero-slider.css">
+    <title>Åstorp Tandläkare Centrum | Vi skapar leenden för livet!</title>
+    <meta name="description" content="Åstorp Tandläkare Centrum erbjuder modern, trygg och personlig tandvård för hela familjen. Boka tid hos din tandläkare i Åstorp.">
+    <meta property="og:site_name" content="Åstorp Tandläkare Centrum">
+    <!-- Standard favicon (för de flesta webbläsare) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+
+    <!-- Apple (iOS, iPadOS) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+    <!-- Android/Chrome/Samsung -->
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/favicon.png">
+
+    <!-- (valfritt men bra för PWA / Android) -->
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <link rel="preload" href="hero-slider.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="hero-slider.css"></noscript>
     <script src="hero-rotator.js" defer></script>
 
+    <link rel="stylesheet" href="announcement.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://astorptandlakarecentrum.se/#website",
+                    "url": "https://astorptandlakarecentrum.se/",
+                    "name": "Åstorp Tandläkare Centrum",
+                    "alternateName": ["Åstorp Tandläkare Centrum AB"],
+                    "inLanguage": "sv-SE",
+                    "publisher": { "@id": "https://astorptandlakarecentrum.se/#organization" }
+                },
+                {
+                    "@type": "Dentist",
+                    "@id": "https://astorptandlakarecentrum.se/#organization",
+                    "name": "Åstorp Tandläkare Centrum",
+                    "url": "https://astorptandlakarecentrum.se/",
+                    "logo": "https://astorptandlakarecentrum.se/img/favicon.png",
+                    "image": "https://astorptandlakarecentrum.se/img/favicon.png",
+                    "telephone": "042-26 00 44",
+                    "email": "info@astorptandlakarecentrum.se",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Storgatan 20D",
+                        "postalCode": "265 30",
+                        "addressLocality": "Åstorp",
+                        "addressCountry": "SE"
+                    },
+                    "sameAs": [
+                        "https://www.facebook.com/profile.php?id=61580167063307&mibextid=wwXIfr&rdid=0uqkgMYoQxGMp5H8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GFkFFtppz%2F%3Fmibextid%3DwwXIfr#",
+                        "https://www.instagram.com/astorptandlakarecentrum?igsh=bHhjYjE0YnE0YmFp",
+                        "https://www.tiktok.com/@astorptandlakarecentrum"
+                    ]
+                }
+            ]
+        }
+    </script>
 
 
+    <link rel="preload" as="image" href="img/hero1.jpg">
+
+
+    <link rel="stylesheet" href="offhours-popup.css?v=5">
+
+    <!-- Länkar ska redan finnas i <head> -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js" defer></script>
+
+    <script src="script.js"></script>
 </head>
 
 
 
+<script src="offhours-popup.js" defer></script>
+
 <body>
+<!-- Announcements Banner innan drift -->
+<div class="announcement-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        ℹ️ Åstorp Tandläkare Centrum öppnar den 6 oktober 2025. Vår bokningstjänst kommer att bli tillgänglig inom kort – vi ser fram emot att välkomna dig!
+    </marquee>
+</div>
+
 
 <div id="header-placeholder"></div>
 
-<section class="hero">
+<section class="hero js-enhanced">
     <div class="hero-bg">
         <div class="slide active" style="background-image:url('img/hero1.jpg')"></div>
         <div class="slide" style="background-image:url('img/hero2.jpg')"></div>
         <div class="slide" style="background-image:url('img/hero4.jpg')"></div>
     </div>
 
+
+
     <div class="hero-content">
         <h2>Vi skapar leenden för livet!</h2>
         <p>Din trygga tandvårdsklinik i hjärtat av Åstorp. Välkommen att boka tid redan idag.</p>
-        <a href="kontakt.html" class="button">Boka tid</a>
+        <a href="bokning.html" class="button">Boka tid</a>
+        <!-- === Social i hero-boxen === -->
+        <div id="hero-social">
+            <p class="social-lead">Följ oss på våra sociala medier</p>
+            <ul class="icons" role="list">
+                <li>
+                    <a class="fb" href="https://www.facebook.com/share/1GFkFFtppz/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.88h-2.34v6.99A10 10 0 0 0 22 12z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="ig" href="https://www.instagram.com/astorptandlakarecentrum?igsh=bHhjYjE0YnE0YmFp" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5ZM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="tt" href="https://tiktok.com/@DINKLINIK" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M14.5 3c.5 2.1 1.9 3.7 4.3 4.1v2.3c-1.5 0-3-.5-4.3-1.4v6.6a6 6 0 1 1-6-6c.4 0 .8 0 1.2.1v2.6a3.4 3.4 0 1 0 2.3 3.2V3h2.2z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Scopad CSS för social-delen -->
+            <style>
+                #hero-social{
+                  margin:14px auto;
+                  padding:16px;
+                  background:rgba(0,0,0,0.55);   /* samma känsla som övriga hero-boxar */
+                  border-radius:12px;
+                  text-align:center;
+                  max-width: 340px;
+                }
+                #hero-social .social-lead{
+                  margin:0 0 10px 0;
+                  font-size:1rem;
+                  font-weight:600;
+                  color:#fff;
+                }
+                #hero-social .icons{
+                  list-style:none;
+                  margin:0;
+                  padding:0;
+                  display:inline-flex;
+                  gap:12px;
+                  align-items:center;
+                  justify-content:center;
+                }
+                #hero-social .icons li{ display:inline-block; }
+                #hero-social .icons a{
+                  display:inline-flex;
+                  width:40px; height:40px;
+                  border-radius:999px;
+                  align-items:center;
+                  justify-content:center;
+                  color:#fff;
+                  text-decoration:none;
+                  box-shadow:0 4px 10px rgba(0,0,0,.3);
+                  transition:.15s;
+                }
+                #hero-social .icons a:hover{ transform:translateY(-2px); }
+                #hero-social .icons a svg{ width:20px; height:20px; display:block; }
+                /* Ikonfärger */
+                #hero-social .icons a.fb{ background:#1877F2; } /* Facebook */
+                #hero-social .icons a.tt{ background:#000; }    /* TikTok */
+                #hero-social .icons a.ig{
+                  background:radial-gradient(circle at 30% 107%,
+                    #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+                }
+                /* Mobil lite mindre */
+                @media (max-width:600px){
+                  #hero-social{ padding:12px; }
+                  #hero-social .icons a{ width:36px; height:36px; }
+                  #hero-social .icons a svg{ width:18px; height:18px; }
+                }
+            </style>
+        </div>
+
+        <div class="hero-announcement">
+            <p>⚠️ Kliniken öppnar <strong>6 oktober 2025</strong></p>
+            <p>Bokningar av tider blir tillgängliga inom kort</p>
+        </div>
     </div>
 </section>
+
+
 
 <section class="treatment-intro-section">
     <div class="treatment-intro-text">
@@ -41,6 +216,8 @@
         </svg>
     </div>
 </section>
+
+
 
 
 
@@ -187,9 +364,8 @@
     </div>
 </section>
 
-
-<div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 </section>
-<script src="script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,28 @@
+/* === Announcement Banner === */
+.announcement-bar {
+  background-color: #003366;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* === Hero Announcement Box === */
+.hero-announcement {
+  background-color: rgba(0, 51, 102, 0.85); /* mörkblå med genomskinlighet */
+  color: #fff;
+  padding: 15px 25px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 51, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 51, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 51, 102, 0); }
+}

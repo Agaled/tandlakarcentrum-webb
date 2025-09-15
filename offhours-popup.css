@@ -1,0 +1,201 @@
+/* === Off-hours Popup – Modern/Soft UI (v2) ===
+   - Glasig yta + backdrop-blur
+   - Rundare hörn, mjuka skuggor
+   - Subtil puls (box-shadow ring + lätt scale)
+   - Tillgängligt fokus och reduced-motion
+   - Auto dark-mode via prefers-color-scheme
+*/
+
+:root {
+  --popup-bg: rgba(255, 255, 255, 0.82);
+  --popup-border: rgba(255, 255, 255, 0.6);
+  --popup-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  --accent: #ff4d4f;           /* röd accent (varmkorrigerad) */
+  --accent-strong: #e64546;
+  --text: #1f2937;             /* slate-800 */
+  --muted: #4b5563;            /* slate-600 */
+  --btn-bg: #0ea5e9;           /* sky-500 */
+  --btn-bg-hover: #0284c7;     /* sky-600 */
+  --btn-text: #ffffff;
+  --ring: rgba(255, 77, 79, 0.36);
+  --ring-clear: rgba(255, 77, 79, 0);
+
+  --radius: 18px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --popup-bg: rgba(17, 24, 39, 0.78);     /* slate-900 */
+    --popup-border: rgba(255, 255, 255, 0.08);
+    --popup-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --text: #e5e7eb;                        /* zinc-200 */
+    --muted: #9ca3af;                       /* zinc-400 */
+    --btn-bg: #38bdf8;                      /* sky-400 */
+    --btn-bg-hover: #0ea5e9;                /* sky-500 */
+    --ring: rgba(255, 120, 124, 0.32);
+    --ring-clear: rgba(255, 120, 124, 0);
+  }
+}
+
+/* Backdrop */
+#offhours-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;                 /* togglas via JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  background: rgba(2, 6, 23, 0.28); /* slate-950 med opacitet */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Kortet */
+#offhours-popup {
+  position: relative;
+  max-width: 560px;
+  width: calc(100% - 32px);
+  background: linear-gradient(180deg, var(--popup-bg), var(--popup-bg));
+  border: 1px solid var(--popup-border);
+  border-radius: var(--radius);
+  box-shadow: var(--popup-shadow);
+  padding: 22px 22px 18px;
+  text-align: left;
+  outline: 0;
+
+  /* mjuk puls + lätt lyft */
+  animation: offhours-pulse 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+#offhours-popup[aria-hidden="true"] { display: none; }
+
+/* Titel med ikon */
+#offhours-popup h3 {
+  margin: 0 36px 8px 0;
+  font-size: 1.25rem;
+  color: var(--text);
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#offhours-popup h3::before {
+  content: "⏰";
+  font-size: 1.15em;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(1px);
+  color: var(--accent-strong);
+}
+
+/* Brödtext */
+#offhours-popup p {
+  margin: 0 0 14px 0;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* CTA-rad */
+#offhours-popup .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: 10px;
+}
+
+/* Tel-knappen: mjuk pill, svag glöd */
+#offhours-popup a.tel-btn {
+  display: inline-block;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.28);
+  transform: translateY(0);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+#offhours-popup a.tel-btn:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.34);
+}
+
+#offhours-popup a.tel-btn:focus {
+  outline: 3px solid rgba(14, 165, 233, 0.4);
+  outline-offset: 2px;
+}
+
+/* Liten förklaringstext */
+#offhours-popup .cta-row small {
+  color: var(--muted);
+}
+
+/* Stäng-knapp: diskret glas */
+#offhours-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--popup-border);
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  transition: background-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+@media (prefers-color-scheme: dark) {
+  #offhours-close {
+    background: rgba(17,24,39,0.6);
+  }
+}
+
+#offhours-close:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+#offhours-close:focus {
+  outline: 3px solid rgba(14,165,233,0.4);
+  outline-offset: 2px;
+}
+
+/* Puls-animation: ring + svag skala */
+@keyframes offhours-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--ring);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 0 12px var(--ring-clear);
+    transform: scale(1.008);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--ring-clear);
+    transform: scale(1);
+  }
+}
+
+/* Respektera reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #offhours-popup { animation: none; transform: none; }
+}
+
+/* Mobil finputs */
+@media (max-width: 560px) {
+  #offhours-popup { padding: 18px 16px; }
+  #offhours-popup h3 { font-size: 1.15rem; }
+  #offhours-close { top: 8px; right: 8px; }
+}

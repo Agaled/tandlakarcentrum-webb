@@ -112,4 +112,153 @@
     align-items: center;
     margin-top: 10px;
   }
+
+  /* Överskrivning av gamla regler för headern */
+  .header-left .logo {
+    height: 90px !important;     /* Gör loggan lagom hög */
+    max-width: 180px !important; /* Begränsar bredden */
+  }
+
+  .header-center {
+    margin-top: 15px !important; /* Mindre avstånd ovanför menyn */
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* === Tight header – gör den lägre utan att sabba layouten === */
+
+  /* 1) Mindre vertikal padding i headern */
+  .custom-header {
+    padding-block: 8px;     /* tidigare t.ex. 10–14px */
+    min-height: unset;      /* om någon regel satt en onödig min-height */
+  }
+
+  /* 2) Begränsa loggans höjd (låter bredden följa med) */
+  .header-left .logo,
+  .header-left img.logo,
+  .header-left a img {
+    height: 56px;           /* desktophöjd */
+    width: auto;
+    max-width: 220px;       /* skydd mot superbreda filer */
+    object-fit: contain;    /* kläm inte ihop loggan */
+    display: block;
+  }
+
+  /* 3) Strama upp menylänkarna vertikalt */
+  .header-center nav > ul > li > a {
+    padding-block: 10px;    /* var mer? sänk till 9–11px för smalare header */
+    line-height: 1.2;
+  }
+
+  /* 4) Högerkolumnen (telefon + boka) – lite tajtare spacing */
+  .header-right-vertical {
+    gap: 8px;
+  }
+  .header-right-vertical .contact-box-vertical {
+    padding: 6px 10px;      /* var ofta ~10–12px; sänk för mindre höjd */
+    font-size: 14px;        /* kan sänkas 1–2px om du vill */
+  }
+
+  /* 5) Mobil: ännu lite mindre logga/padding */
+  @media (max-width: 768px) {
+    .custom-header { padding-block: 6px; }
+    .header-left .logo,
+    .header-left img.logo,
+    .header-left a img {
+      height: 44px;
+      max-width: 180px;
+    }
+    .header-center nav > ul > li > a {
+      padding-block: 8px;
+    }
+  }
+  /* ==== FIXES (lägg sist i header.css) ==== */
+
+  /* 1) Rimlig loggstorlek överallt (desktop) */
+  .custom-header .header-left img.logo {
+    height: 56px !important;     /* justera till 52–60 px om du vill */
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  /* 2) Tajtare header utan att bryta layouten */
+  .custom-header {
+    padding: 8px 20px !important;
+    min-height: 0 !important;
+    align-items: center !important;
+  }
+
+  /* 3) Menylänkar mindre vertikal yta */
+  .custom-header .nav-links a {
+    line-height: 1.2 !important;
+    padding-block: 8px !important;
+  }
+
+  /* 4) Högerkolumn kompakt */
+  .custom-header .header-right-vertical { gap: 6px !important; }
+  .custom-header .header-right-vertical .contact-box-vertical {
+    padding: 6px 10px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* 5) Mobil: mindre logga och ytor (rätta ev. överstyrningar) */
+  @media (max-width: 768px) {
+    .custom-header { padding: 6px 14px !important; }
+    .custom-header .header-left img.logo {
+      height: 44px !important;   /* ersätter 90px !important från tidigare */
+      max-width: 180px !important;
+    }
+    .custom-header .nav-links { gap: 10px !important; }
+  }
+/* ==== Header whitestrip fix (lägg sist i header.css) ==== */
+
+/* 1) Gör headern självhöjande, kompakt och med tydlig bakgrund */
+.custom-header {
+  height: auto !important;          /* ta bort låsning som skapar tom yta */
+  min-height: 0 !important;
+  padding: 8px 20px !important;     /* lagom vertikal padding */
+  margin: 0 !important;
+  background-color: #0b4a78 !important;  /* er blå (byt om ni har annan) */
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2) Logga och innehåll hålls inom headerns höjd */
+.custom-header .header-left img,
+.custom-header .logo img,
+.custom-header img.logo {
+  max-height: 56px !important;      /* justera 48–60 px efter smak */
+  height: auto !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* 3) Meny och högerkolumn tajtare (hindrar extra höjd) */
+.custom-header .nav-links a { padding-block: 8px !important; line-height: 1.2 !important; }
+.custom-header .header-right-vertical { gap: 8px !important; }
+.custom-header .header-right-vertical .contact-box-vertical { padding: 6px 10px !important; line-height: 1.2 !important; }
+
+/* 4) Nolla oväntad extra-yta nedanför headern */
+.custom-header + * { margin-top: 0 !important; }   /* tar bort toppmarginal på första sektionen */
+.hero, .hero-wrapper, .hero-container { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* 5) Om en topbar/socialbar råkar ligga kvar: gör den supertunn eller stäng av */
+.topbar-social, .topbar-social--slim { margin: 0 !important; padding: 3px 8px !important; }
+body, html { margin: 0 !important; padding: 0 !important; }  /* säkerställ ingen body-marginal */
+
+/* 6) Mobil – lite mindre logga och padding */
+@media (max-width: 768px) {
+  .custom-header { padding: 6px 14px !important; }
+  .custom-header .header-left img,
+  .custom-header .logo img,
+  .custom-header img.logo { max-height: 44px !important; }
+}
+
+
+
+
 }

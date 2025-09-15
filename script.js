@@ -75,3 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// === Ladda in chatboten på alla sidor ===
+(function loadChatbotEverywhere() {
+  // Skapa en placeholder längst ner i <body>
+  const placeholder = document.createElement('div');
+  placeholder.id = 'chatbot-placeholder';
+  document.body.appendChild(placeholder);
+
+  // Hämta och injicera chatbotens HTML
+  fetch('chatbot.html')
+    .then(res => res.text())
+    .then(html => { placeholder.innerHTML = html; })
+    .catch(() => { console.warn('Kunde inte ladda chatbot.html'); });
+})();
+
+document.documentElement.classList.add('js-ready');
