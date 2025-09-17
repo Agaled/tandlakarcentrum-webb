@@ -1,156 +1,35 @@
-/* ====== Layout (2 kolumner) ====== */
-:root{
-  --primary:#0a5bd3;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --bg:#ffffff;
-  --bgSoft:#f9fafb;
-  --radius:12px;
-}
-
+:root { --bg:#f7f7fb; --card:#fff; --text:#1f2430; --muted:#6b7280; --brand:#0ea5e9; --ok:#e6ffed; --warn:#fff6d6; --border:#e5e7eb; }
 *{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;background:var(--bg);color:var(--text)}
+.wrap{max-width:880px;margin:36px auto;padding:0 16px}
+h1{font-size:34px;margin:0 0 8px} h2{font-size:18px;margin:24px 0 12px;color:var(--muted)}
+.alert{padding:14px 16px;border-radius:10px;margin:12px 0 16px;border:1px solid var(--border);background:var(--warn)}
+.alert.ok{background:var(--ok)}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.loading{color:var(--muted);margin:4px 0 12px}
 
-body{
-  margin:0;
-  font-family: system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-  color:var(--text);
-  background:#fff;
-}
+.treatments{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:10px}
+.treatment{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff;display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
+.t-title{font-weight:600}
+.t-meta{color:var(--muted);font-size:14px;display:flex;gap:10px}
+.btn{border:1px solid var(--brand);background:var(--brand);color:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn.primary{font-weight:600}
+.btn:disabled{opacity:.6;cursor:default}
 
-.booking-container{
-  display:flex;
-  min-height:100vh;
-}
-
-/* ====== Vänster bild/intro ====== */
-.booking-left{
-  flex:1;
-  background:url('./img/tandvard.jpg') center/cover no-repeat;
-  position:relative;
-}
-
-.booking-overlay{
-  position:absolute;
-  left:24px; bottom:24px;
-  background:rgba(0,0,0,.55);
-  color:#fff;
-  padding:20px 22px;
-  border-radius:14px;
-  max-width:380px;
-  backdrop-filter: blur(2px);
-}
-.booking-overlay h2{ margin:0 0 10px 0; font-size:26px; }
-.booking-overlay ul{
-  margin:0; padding-left:18px; line-height:1.6; font-size:15px;
-}
-
-/* ====== Höger panel (flödet) ====== */
-.booking-right{
-  flex:1;
-  background:var(--bg);
-  padding:36px 32px;
-  overflow-y:auto;
-}
-
-/* Topprad: tillbaka-knapp + rubrik */
-.back-row{
-  display:flex; align-items:center; gap:12px; margin-bottom:10px;
-}
-.btn-back{
-  appearance:none; border:1px solid var(--border); background:#fff;
-  border-radius:999px; padding:8px 14px; cursor:pointer;
-}
-h1,h2{ margin:0 0 18px 0; font-weight:800; }
-.submuted{ color:var(--muted); }
-
-/* ====== Steg 1: Lista behandlingar ====== */
-.booking-list{
-  margin:12px 0 0 0; padding:0; list-style:none;
-  border-top:1px solid var(--border);
-}
-.booking-item{
-  display:grid; grid-template-columns:1fr auto; align-items:center;
-  padding:18px 6px; border-bottom:1px solid var(--border); cursor:pointer;
-}
-.booking-item:hover{ background:var(--bgSoft); }
-.booking-item .title{ font-weight:700; }
-.booking-item .meta{ color:var(--muted); font-size:13px; }
-
-.chevron{
-  width:28px;height:28px;border:1px solid var(--border);border-radius:999px;
-  display:grid;place-items:center; font-weight:700;
-}
-
-/* liten info-ikon till höger om titeln (valfri) */
-.info-dot{
-  display:inline-grid; place-items:center;
-  width:20px; height:20px; border-radius:999px;
-  border:1px solid var(--border); color:#555; font-size:12px;
-  margin-left:8px;
-}
-
-/* ====== Steg 2: Filter & tider ====== */
-.filter-row{
-  display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 18px 0;
-}
-.chip{
-  border:1px solid var(--border); background:#fff; padding:6px 10px;
-  border-radius:999px; cursor:pointer; font-size:14px;
-}
-.chip.active{ border-color:var(--primary); outline:2px solid rgba(10,91,211,.15); }
-
-.day-header{
-  margin-top:16px; padding-top:10px; border-top:1px solid var(--border);
-  font-weight:800; font-size:18px;
-}
-
-.slot{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:14px 6px; border-bottom:1px solid var(--border);
-}
-.slot .left{
-  display:flex; flex-direction:column; gap:4px;
-}
-.time{ font-weight:800; font-size:16px; }
-.dentist{ color:var(--muted); font-size:14px; }
-.price-row{ display:flex; gap:10px; align-items:center; }
-.price{ font-weight:800; }
-.old-price{ color:#9ca3af; text-decoration:line-through; }
-
-/* knappar */
-.btn{
-  appearance:none; border:none; border-radius:10px;
-  background:var(--primary); color:#fff; padding:10px 14px;
-  cursor:pointer; font-weight:700;
-}
-.btn:hover{ filter:brightness(.92); }
-.btn-outline{
-  background:#fff; color:var(--primary); border:1px solid var(--primary);
-}
-.btn:disabled{ opacity:.6; cursor:not-allowed; }
-
-/* ====== Steg 3: Form (förberett) ====== */
-.form{
-  display:grid; gap:12px; max-width:640px;
-}
-.input, .textarea{
-  width:100%; padding:12px 14px; border:1px solid var(--border);
-  border-radius:10px; background:var(--bgSoft); font-size:15px;
-}
-.textarea{ min-height:120px; resize:vertical; }
-.checkbox{ display:flex; align-items:center; gap:10px; }
-
-/* Meddelande/alert */
-.alert{
-  background:#fef3c7; border:1px solid #fde68a; color:#92400e;
-  padding:10px 12px; border-radius:10px; font-size:14px;
-}
-
-/* ====== Responsiv ====== */
-@media (max-width: 980px){
-  .booking-container{ flex-direction:column; }
-  .booking-left{ min-height:46vh; }
-  .booking-right{ padding:24px 18px; }
-  .booking-overlay{ left:16px; right:16px; bottom:16px; }
-}
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:flex-start;justify-content:center;padding:30px 12px;z-index:20}
+.modal.show{display:flex}
+.modal-content{background:#fff;max-width:820px;width:100%;border-radius:14px;border:1px solid var(--border);padding:16px 16px 18px;position:relative}
+.modal-close{position:absolute;right:10px;top:8px;border:none;background:transparent;font-size:24px;cursor:pointer}
+.subsection{border:1px solid var(--border);border-radius:12px;padding:12px;margin:8px 0 16px;background:#fafafa}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.form .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.form label{display:grid;gap:6px;font-size:14px}
+.form input{padding:8px 10px;border:1px solid var(--border);border-radius:8px}
+.slotlist{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.slot{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff;display:grid;gap:6px}
+.slot strong{font-size:14px}
+.small{font-size:12px;color:var(--muted)}
+.badge{display:inline-block;padding:2px 6px;border-radius:8px;background:#eef2ff}
+#modal { display: none; }
+#modal.show { display: block; }

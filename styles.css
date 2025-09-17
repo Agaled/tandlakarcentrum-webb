@@ -685,28 +685,6 @@ nav ul li a:hover {
     justify-content: center;
   }
 
-/* Reservhöjd för hero så sidan inte hoppar */
-.hero,
-.hero .hero-bg .slide {
-  min-height: 68vh; /* justera vid behov */
-}
-
-/* Sätt fasta proportioner på kort-bilderna för att undvika layout-skift */
-.treatment-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;   /* ger stabil höjd */
-  object-fit: cover;
-}
-
-/* Dölj delar som förlitar sig på JS tills de är klara */
-.js-enhanced {
-  visibility: hidden;
-}
-.js-ready .js-enhanced {
-  visibility: visible;
-}
 
 
 }

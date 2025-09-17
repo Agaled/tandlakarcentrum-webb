@@ -1,31 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <title>Boka tid – Din klinik</title>
-    <link rel="stylesheet" href="booking.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bokning</title>
+    <link rel="stylesheet" href="./booking.css" />
 </head>
 <body>
-<div class="booking-container">
-    <!-- Vänster sida med bild/text -->
-    <div class="booking-left">
-        <div class="booking-overlay">
-            <h2>Välkommen till vår onlinebokning</h2>
-            <ul>
-                <li>Akuttid samma dag</li>
-                <li>Öppet kvällar & helger</li>
-                <li>Drop-in vid akuta besvär</li>
-                <li>Ring oss på 076 - 564 14 78</li>
-            </ul>
-        </div>
-    </div>
+<main class="wrap">
+    <h1>Hur kan vi hjälpa dig?</h1>
 
-    <!-- Höger sida med bokningsflödet -->
-    <div class="booking-right" id="booking-app">
-        <!-- Här fyller vi på via booking.js -->
+    <div id="status" aria-live="polite"></div>
+
+    <div class="section">
+        <h2>Behandlingar</h2>
+        <div id="loading" class="loading">Laddar behandlingar…</div>
+        <ul id="treatments" class="treatments"></ul>
+    </div>
+</main>
+
+<!-- Modal: välj tid + uppgifter -->
+<div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" aria-label="Stäng">×</button>
+        <h3 id="modalTitle">Boka</h3>
+        <div id="modalAlert"></div>
+
+        <div class="subsection">
+            <div class="row">
+                <label>Datumintervall:</label>
+                <input type="date" id="fromDate">
+                <span>–</span>
+                <input type="date" id="toDate">
+                <button id="reloadSlots" class="btn">Sök tider</button>
+            </div>
+            <div id="slotsLoading" class="loading">Söker lediga tider…</div>
+            <ul id="slots" class="slotlist"></ul>
+        </div>
+
+        <form id="bookForm" class="form">
+            <h4>Dina uppgifter</h4>
+            <div class="grid">
+                <label>Personnummer (ÅÅÅÅMMDDXXXX)
+                    <input id="personalId" required placeholder="198912319999" inputmode="numeric" autocomplete="off">
+                </label>
+                <label>Förnamn
+                    <input id="firstName" required autocomplete="given-name">
+                </label>
+                <label>Efternamn
+                    <input id="lastName" required autocomplete="family-name">
+                </label>
+                <label>Telefon
+                    <input id="phone" required inputmode="tel" autocomplete="tel">
+                </label>
+                <label>E-post
+                    <input id="email" type="email" autocomplete="email">
+                </label>
+            </div>
+            <button class="btn primary" id="submitBooking" disabled>Boka tiden</button>
+        </form>
     </div>
 </div>
 
-<script src="booking.js"></script>
+<script src="./booking.js"></script>
 </body>
 </html>
