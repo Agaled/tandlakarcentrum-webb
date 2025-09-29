@@ -3,65 +3,116 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Bokning</title>
-    <link rel="stylesheet" href="./booking.css" />
+    <title>Boka tid</title>
+    <link rel="stylesheet" href="booking.css" />
 </head>
-<body>
-<main class="wrap">
-    <h1>Hur kan vi hjälpa dig?</h1>
+<body class="booking-shell">
 
-    <div id="status" aria-live="polite"></div>
-
-    <div class="section">
-        <h2>Behandlingar</h2>
-        <div id="loading" class="loading">Laddar behandlingar…</div>
-        <ul id="treatments" class="treatments"></ul>
+<!-- Vänster hero -->
+<aside class="hero">
+    <div class="hero-content">
+        <h1>Välkommen till vår onlinebokning</h1>
+        <ul class="hero-bullets">
+            <li>Vi har öppet för <strong>akuta tider dygnet runt</strong> alla dagar i veckan</li>
+            <li>Ring oss direkt på <a class="phone-link" href="tel:+4642260044">042-26 00 44</a></li>
+            <li>Åstorp Tandläkare Centrum – alltid nära till hjälp</li>
+        </ul>
     </div>
-</main>
+    <div class="devby">
+        Utvecklad av
+        <a class="credit-link" href="https://wdbsstudio.se/" target="_blank" rel="noopener noreferrer">
+            Webb design boost studio (WDBS)
+        </a>
+    </div>
+</aside>
 
-<!-- Modal: välj tid + uppgifter -->
-<div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" id="modalClose" aria-label="Stäng">×</button>
-        <h3 id="modalTitle">Boka</h3>
-        <div id="modalAlert"></div>
+<!-- Höger panel -->
+<main class="panel">
+    <!-- Steg 1 – Behandlingar -->
+    <section id="step1" class="card">
+        <div class="card-header">
+            <h2>Hur kan vi hjälpa dig?</h2>
+        </div>
+        <div id="treatmentsGrid" class="treatments"></div>
+        <p class="help">Välj en behandling för att fortsätta.</p>
+    </section>
 
-        <div class="subsection">
-            <div class="row">
-                <label>Datumintervall:</label>
-                <input type="date" id="fromDate">
-                <span>–</span>
-                <input type="date" id="toDate">
-                <button id="reloadSlots" class="btn">Sök tider</button>
+    <!-- Steg 2 – Tider -->
+    <section id="step2" class="card hidden">
+        <div class="card-header with-actions">
+            <h2>Välj tid</h2>
+            <div class="actions">
+                <button id="backTo1" class="btn btn-outline" type="button">Till behandlingar</button>
             </div>
-            <div id="slotsLoading" class="loading">Söker lediga tider…</div>
-            <ul id="slots" class="slotlist"></ul>
         </div>
 
-        <form id="bookForm" class="form">
-            <h4>Dina uppgifter</h4>
-            <div class="grid">
-                <label>Personnummer (ÅÅÅÅMMDDXXXX)
-                    <input id="personalId" required placeholder="198912319999" inputmode="numeric" autocomplete="off">
-                </label>
-                <label>Förnamn
-                    <input id="firstName" required autocomplete="given-name">
-                </label>
-                <label>Efternamn
-                    <input id="lastName" required autocomplete="family-name">
-                </label>
-                <label>Telefon
-                    <input id="phone" required inputmode="tel" autocomplete="tel">
-                </label>
-                <label>E-post
-                    <input id="email" type="email" autocomplete="email">
-                </label>
+        <div class="field-grid">
+            <div class="field">
+                <label for="caregiverSelectSmall">Behandlare</label>
+                <select id="caregiverSelectSmall"></select>
             </div>
-            <button class="btn primary" id="submitBooking" disabled>Boka tiden</button>
-        </form>
-    </div>
-</div>
+            <div class="field">
+                <label for="dateInput">Datum</label>
+                <input id="dateInput" type="date" class="date-input" />
+            </div>
+        </div>
 
-<script src="./booking.js"></script>
+        <div class="cta-row">
+            <button id="loadSlotsBtn" type="button" class="btn btn-outline">Visa tider för datumet</button>
+        </div>
+
+        <div id="slotsList" class="slots-list" style="margin-top:12px;"></div>
+        <p class="help">Vi visar närmaste dag med lediga tider automatiskt.</p>
+    </section>
+
+    <!-- Steg 3 – Formulär -->
+    <section id="step3" class="card hidden">
+        <div class="card-header with-actions">
+            <h2>Dina kontaktuppgifter</h2>
+            <div class="actions">
+                <button id="backTo2" class="btn btn-outline" type="button">Tillbaka till tider</button>
+            </div>
+        </div>
+
+        <div class="booking-summary" id="apptSummary">
+            Du bokar …
+        </div>
+
+        <div class="field-grid">
+            <div class="field">
+                <label for="firstName">Förnamn</label>
+                <input id="firstName" type="text" autocomplete="given-name" />
+            </div>
+            <div class="field">
+                <label for="lastName">Efternamn</label>
+                <input id="lastName" type="text" autocomplete="family-name" />
+            </div>
+            <div class="field">
+                <label for="personalId">Personnummer (ÅÅMMDD-XXXX)</label>
+                <input id="personalId" type="text" inputmode="numeric" pattern="\d{6}-\d{4}" placeholder="ÅÅMMDD-XXXX" />
+            </div>
+            <div class="field">
+                <label for="email">E-post</label>
+                <input id="email" type="email" autocomplete="email" />
+            </div>
+            <div class="field">
+                <label for="phone">Mobil</label>
+                <input id="phone" type="tel" autocomplete="tel" />
+            </div>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+            <label for="note">Meddelande till kliniken (valfritt)</label>
+            <textarea id="note" rows="4" placeholder="Övriga upplysningar, t.ex. tandvårdsrädsla eller besvär"></textarea>
+        </div>
+
+        <div class="cta-row">
+            <button id="bookBtn" class="btn btn-primary" type="button" disabled>Bekräfta bokning</button>
+        </div>
+        <div id="bookResult" class="result"></div>
+    </section>
+</main>
+
+<script src="booking.js"></script>
 </body>
 </html>

@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bokning – Åstorp Tandläkare Centrum</title>
-    <link rel="stylesheet" href="bokning.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Boka tid</title>
+    <meta name="robots" content="noindex,follow" />
+    <!-- Dentech booking widget loader (v2) -->
+    <script async type="module" src="https://booking-widget-prod-nj23eril7a-lz.a.run.app/v2/widgetloader.js"></script>
+
+    <script>
+        // Konfiguration: inbäddad widget, full-bleed
+        window.tdlWidgetConfig = {
+          mode: "embedded",
+          apiToken: "d6abc1ba-a4de-4cef-9174-ec2cc15139be",
+          // Försök få iframen att alltid fylla viewportens höjd
+          iframeHeight: "100vh",
+          enableScrolling: true,
+          // initialScreen: "appointment",
+          // clinicIds: [],
+          // treatmentIds: []
+        };
+    </script>
+
+    <style>
+        /* Nollställ och gör sidan 100% viewport */
+        html, body {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          min-height: 100%;
+          background: #f5f5f5;
+        }
+
+        /* Root som tar hela höjden/bredden */
+        .booking-root {
+          min-height: 100vh;
+          width: 100%;
+          display: block;
+        }
+
+        /*
+          Dentech monterar in ett iframe i denna div.
+          Sätt en min-höjd så vi undviker "klipp".
+        */
+        #tdl-booking-widget {
+          width: 100%;
+          min-height: 100vh;
+          display: block;
+        }
+
+        /* Ta bort allt extra mellanrum på mobiler med "safe areas" */
+        @supports(padding: max(0px)) {
+          body {
+            padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+          }
+        }
+    </style>
 </head>
 <body>
-<!-- Header -->
-<div id="header-container">
-    <!-- inkludera din header här om du använder include -->
-</div>
-
-<main class="booking-info">
-    <div class="booking-box">
-        <h1>📅 Bokning ej tillgänglig ännu</h1>
-        <p>
-            Vår onlinebokning kommer att öppna <strong>inom kort</strong> i samband med
-            att kliniken startar sin verksamhet den <strong>6 oktober 2025</strong>.
-        </p>
-        <p>
-            Vi ser fram emot att ta hand om ditt leende! Välkommen tillbaka snart för att boka din tid.
-        </p>
-    </div>
-</main>
-
-<!-- Footer -->
-<div id="footer-container">
-    <!-- inkludera din footer här om du använder include -->
+<div class="booking-root">
+    <div id="tdl-booking-widget"></div>
 </div>
 </body>
 </html>
