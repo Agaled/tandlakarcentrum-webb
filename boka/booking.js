@@ -327,8 +327,12 @@ $('#bookBtn').addEventListener('click', async ()=>{
     if (!lookup.ok) throw new Error('Patient finns inte i journalsystemet. Kontakta kliniken för registrering.');
 
     const durationMinutes = Number(CURRENT.slot.duration || CURRENT.procedureDuration || 30);
+
+const startDate = new Date(CURRENT.slot.dtstart);
+const fixedDtstart = toOffsetIso(startDate);
+
     const payload = {
-      dtstart: CURRENT.slot.dtstart,
+       dtstart: fixedDtstart,
       durationMinutes,
       procedureId: CURRENT.procedureId,
       organizerId: CURRENT.caregiverId,
@@ -342,9 +346,10 @@ $('#bookBtn').addEventListener('click', async ()=>{
       }
     };
 
-    const result = await postBooking(payload);
-    const when = new Intl.DateTimeFormat('sv-SE',{dateStyle:'full',timeStyle:'short'}).format(new Date(CURRENT.slot.dtstart));
-    $('#bookResult').innerHTML = `✅ Bokat: <strong>${when}</strong>. Tack! (ID: ${result?.data?.id || 'ok'})`;
+const result = await postBooking(payload);
+const when = new Intl.DateTimeFormat('sv-SE',{dateStyle:'full',timeStyle:'short'})
+               .format(new Date(fixedDtstart)); // <-- använd fixed här
+$('#bookResult').innerHTML = `✅ Bokat: <strong>${when}</strong>. Tack! (ID: ${result?.data?.id || 'ok'})`;
     btn.textContent = 'Bekräfta bokning';
   }catch(e){
     $('#bookResult').textContent = `⚠️ ${String(e.message || e)}`;
