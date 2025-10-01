@@ -265,6 +265,8 @@ app.get('/api/patient-lookup', async (req, res) => {
   }
 });
 
+console.log('[BOOK] SENDING', { dtstartUtc, dtendUtc, durationMinutes });
+
 // === Skapa bokning (kopplad till rätt patient via patient_ids) ===
 app.post('/api/book', async (req, res) => {
   try {
@@ -290,11 +292,14 @@ app.post('/api/book', async (req, res) => {
 
     // 2) beräkna dtend
 // --- efter (patch) ---
-const start = new Date(dtstart);
-const dtstartIso = toOffsetIso(start); // alltid med +HH:MM-offset
-const end   = new Date(start.getTime() + Number(durationMinutes) * 60000);
-const dtend = toOffsetIso(end);
+const startDate = new Date(dtstart);
+const endDate   = new Date(startDate.getTime() + Number(durationMinutes) * 60000);
 
+// Hjälpare för att ta bort millisekunder men behålla 'Z'
+const toUtcIso = d => d.toISOString().replace(/\.\d{3}Z$/, 'Z');
+
+const dtstartUtc = toUtcIso(startDate);
+const dtendUtc   = toUtcIso(endDate);
 
     // 3) Skapa bokning via /api/bookings/book
     const qs = new URLSearchParams();
@@ -305,8 +310,8 @@ const dtend = toOffsetIso(end);
     const body = {
       data: {
         attributes: {
-          dtstart,
-          dtend,
+          dtstart: dtstartUtc,
+          dtend:   dtendUtc,
           duration_in_minutes: Number(durationMinutes),
           status: 'CONFIRMED',
           summary: 'Onlinebokning',
