@@ -265,7 +265,7 @@ app.get('/api/patient-lookup', async (req, res) => {
   }
 });
 
-console.log('[BOOK] SENDING', { dtstartUtc, dtendUtc, durationMinutes });
+
 
 // === Skapa bokning (kopplad till rätt patient via patient_ids) ===
 app.post('/api/book', async (req, res) => {
@@ -328,6 +328,8 @@ const dtendUtc   = toUtcIso(endDate);
     return res.status(500).json({ error: String(e) });
   }
 });
+
+console.log('[BOOK] SENDING', { dtstartUtc, dtendUtc, durationMinutes });
 
 // === Start server ===
 const PORT = process.env.PORT || 10000;     // låt Render bestämma port
