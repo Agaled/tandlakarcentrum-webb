@@ -322,6 +322,9 @@ app.post('/api/book', async (req, res) => {
 });
 
 // === Start server ===
-app.listen(PORT, () => {
-  console.log(`Muntra proxy running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 10000;     // låt Render bestämma port
+const HOST = '0.0.0.0';                      // lyssna externt (inte bara localhost)
+app.listen(PORT, HOST, () => {
+  console.log(`Muntra proxy running on http://${HOST}:${PORT}`);
 });
+
