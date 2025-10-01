@@ -267,6 +267,9 @@ app.get('/api/patient-lookup', async (req, res) => {
 
 
 
+
+
+// === Skapa bokning (kopplad till rätt patient via patient_ids) ===
 // === Skapa bokning (kopplad till rätt patient via patient_ids) ===
 app.post('/api/book', async (req, res) => {
   try {
@@ -290,54 +293,60 @@ app.post('/api/book', async (req, res) => {
     const patientId = String(foundPatient.id);
     console.log('[BOOK] VALD PATIENT:', patientId, foundPatient?.attributes?.first_name, foundPatient?.attributes?.last_name);
 
-// 2) BERÄKNA start/slut och FORMATERA med samma offset som inkommande dtstart
-const startStr  = String(dtstart);
-const startDate = new Date(startStr);
-const endDate   = new Date(startDate.getTime() + Number(durationMinutes) * 60000);
+    // 2) NORMALISERA tider -> använd SAMMA offset för start & slut
+    const startStr  = String(dtstart);
+    const startDate = new Date(startStr);
+    const endDate   = new Date(startDate.getTime() + Number(durationMinutes) * 60000);
 
-// plocka ut offset från dtstart (t.ex. "+02:00" eller "Z")
-const m = startStr.match(/([+-]\d{2}:\d{2}|Z)$/);
-const keepOffset = m ? m[1] : '+02:00'; // fallback: svensk sommartid; vill du vara petig kan vi autodetektera +01/+02
+    // plocka ut offset från dtstart (t.ex. "+02:00" eller "Z"); fallbacka till svensk sommar +02:00 om saknas
+    const m = startStr.match(/([+-]\d{2}:\d{2}|Z)$/);
+    const keepOffset = m ? m[1] : '+02:00';
 
-// Format-helper: rendera instanten med given offset utan millisekunder
-function fmtWithOffset(date, offset) {
-  if (offset === 'Z') return date.toISOString().replace(/\.\d{3}Z$/, 'Z');
-  const sign = offset.startsWith('-') ? -1 : 1;
-  const [hh, mm] = offset.slice(1).split(':').map(Number);
-  const offsetMin = sign * (hh * 60 + mm);
-  const shifted = new Date(date.getTime() + offsetMin * 60000); // “väggtid” för given offset
-  const pad = x => String(x).padStart(2,'0');
-  return `${shifted.getFullYear()}-${pad(shifted.getMonth()+1)}-${pad(shifted.getDate())}`
-       + `T${pad(shifted.getHours())}:${pad(shifted.getMinutes())}:${pad(shifted.getSeconds())}${offset}`;
-}
-
-const dtstartOut = fmtWithOffset(startDate, keepOffset);
-const dtendOut   = fmtWithOffset(endDate,   keepOffset);
-
-// 3) payload – använd dtstartOut/dtendOut
-const body = {
-  data: {
-    attributes: {
-      dtstart: dtstartOut,
-      dtend:   dtendOut,
-      duration_in_minutes: Number(durationMinutes),
-      status: 'CONFIRMED',
-      summary: 'Onlinebokning',
-      description: patient.note || 'Onlinebokning via webb'
+    function fmtWithOffset(date, offset) {
+      if (offset === 'Z') return date.toISOString().replace(/\.\d{3}Z$/, 'Z');
+      const sign = offset.startsWith('-') ? -1 : 1;
+      const [hh, mm] = offset.slice(1).split(':').map(Number);
+      const offsetMin = sign * (hh * 60 + mm);
+      // Render kör i UTC; skjut ms så "väggtid" matchar offseten och bygg egen ISO
+      const shifted = new Date(date.getTime() + offsetMin * 60000);
+      const pad = x => String(x).padStart(2,'0');
+      return `${shifted.getFullYear()}-${pad(shifted.getMonth()+1)}-${pad(shifted.getDate())}` +
+             `T${pad(shifted.getHours())}:${pad(shifted.getMinutes())}:${pad(shifted.getSeconds())}${offset}`;
     }
-  }
-};
 
+    const dtstartOut = fmtWithOffset(startDate, keepOffset);
+    const dtendOut   = fmtWithOffset(endDate,   keepOffset);
 
+    const body = {
+      data: {
+        attributes: {
+          dtstart: dtstartOut,
+          dtend:   dtendOut,
+          duration_in_minutes: Number(durationMinutes),
+          status: 'CONFIRMED',
+          summary: 'Onlinebokning',
+          description: patient.note || 'Onlinebokning via webb'
+        }
+      }
+    };
+
+    // 3) Bygg query & POSTA (nu INNE i routen)
+    const qs = new URLSearchParams();
+    qs.set('clinic_id', String(clinicId));
+    qs.set('user_ids',  String(orgId));
+    qs.set('patient_ids', patientId);
+
+    console.log('[BOOK] SENDING', { dtstartOut, dtendOut, durationMinutes, clinicId, orgId, patientId });
     const created = await muntraPOST(`/api/bookings/book?${qs.toString()}`, body);
+
     console.log('[BOOK] CREATED id:', created?.data?.id, '-> patient', patientId);
     return res.json(created);
+
   } catch (e) {
     console.error('[BOOK] ERROR:', e);
     return res.status(500).json({ error: String(e) });
   }
 });
-
 
 
 // === Start server ===
