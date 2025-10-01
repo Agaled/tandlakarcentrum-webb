@@ -1,5 +1,5 @@
 // ===== API-bas (behåll din port) =====
-const API_BASE = 'http://localhost:2070';
+const API_BASE = 'https://tandlakarcentrum-webb.onrender.com';
 
 // ===== Små hjälpare =====
 const $  = s => document.querySelector(s);

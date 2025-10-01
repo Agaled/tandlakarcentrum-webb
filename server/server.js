@@ -289,9 +289,12 @@ app.post('/api/book', async (req, res) => {
     console.log('[BOOK] VALD PATIENT:', patientId, foundPatient?.attributes?.first_name, foundPatient?.attributes?.last_name);
 
     // 2) beräkna dtend
-    const start = new Date(dtstart);
-    const end   = new Date(start.getTime() + Number(durationMinutes) * 60000);
-    const dtend = toOffsetIso(end);
+// --- efter (patch) ---
+const start = new Date(dtstart);
+const dtstartIso = toOffsetIso(start); // alltid med +HH:MM-offset
+const end   = new Date(start.getTime() + Number(durationMinutes) * 60000);
+const dtend = toOffsetIso(end);
+
 
     // 3) Skapa bokning via /api/bookings/book
     const qs = new URLSearchParams();
