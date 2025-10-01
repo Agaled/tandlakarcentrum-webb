@@ -329,7 +329,7 @@ const dtendUtc   = toUtcIso(endDate);
   }
 });
 
-console.log('[BOOK] SENDING', { dtstartUtc, dtendUtc, durationMinutes });
+
 
 // === Start server ===
 const PORT = process.env.PORT || 10000;     // låt Render bestämma port
