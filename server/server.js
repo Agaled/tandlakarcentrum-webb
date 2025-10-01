@@ -13,7 +13,7 @@ const BASE = process.env.MUNTRA_API_BASE;                 // t.ex. https://api.m
 const TOKEN = process.env.MUNTRA_API_TOKEN;               // din hemliga token
 const CLINIC_ID = process.env.MUNTRA_CLINIC_ID || '7241'; // din klinik
 const DEFAULT_ORGANIZER_ID = process.env.DEFAULT_ORGANIZER_ID || '2830';
-const PORT = process.env.PORT || 2070;
+
 
 // === Personnummer-normalisering ===
 function normalizeSSN10(ssn) {
