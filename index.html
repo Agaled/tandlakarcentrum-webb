@@ -33,6 +33,10 @@
     <noscript><link rel="stylesheet" href="hero-slider.css"></noscript>
     <script src="hero-rotator.js" defer></script>
 
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+
     <link rel="stylesheet" href="announcement.css">
 
     <script type="application/ld+json">
@@ -80,11 +84,11 @@
 
     <link rel="stylesheet" href="offhours-popup.css?v=5">
 
-    <!-- Länkar ska redan finnas i <head> -->
-    <link rel="stylesheet" href="chatbot.css">
-    <script src="chatbot.js" defer></script>
-
     <script src="script.js"></script>
+
+    <link rel="stylesheet" href="new-header/slim-header.css">
+    <script defer src="new-header/slim-header.js"></script>
+
 </head>
 
 
@@ -93,20 +97,17 @@
 
 <body>
 <!-- Announcements Banner innan drift -->
-<div class="announcement-bar">
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-        ℹ️ Åstorp Tandläkare Centrum öppnar sina dörrar den 1 oktober 2025 – boka din tid redan nu!
-    </marquee>
-</div>
-
 
 <div id="header-placeholder"></div>
 
 <section class="hero js-enhanced">
     <div class="hero-bg">
-        <div class="slide active" style="background-image:url('img/hero1.jpg')"></div>
-        <div class="slide" style="background-image:url('img/hero2.jpg')"></div>
+        <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1674775372064-8c75d3f8c757?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1674775372064-8c75d3f8c757?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
         <div class="slide" style="background-image:url('img/hero4.jpg')"></div>
+
+        <!-- Ny bild -->
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1667133295315-820bb6481730?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
     </div>
 
 
@@ -309,9 +310,6 @@
 
     </div>
 
-
-
-
     <section class="why-astorp">
     <div class="why-container">
         <h2>Varför välja Åstorp Tandläkare Centrum?</h2>
@@ -333,32 +331,35 @@
     </div>
 </section>
 
-<section class="reviews-slider">
-    <h2>Vad säger våra patienter?</h2>
-    <div class="slider-container">
-        <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <section class="reviews-slider">
+        <h2>Vad säger våra patienter?</h2>
+        <div class="slider-container">
+            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
 
-        <div class="review-slide active">
-            <div class="stars">★★★★★</div>
-            <p class="review-text">“Otroligt professionellt bemötande och snabba tider. Jag kände mig trygg från första stund. Rekommenderas varmt!”</p>
-            <p class="review-name">– Anna L.</p>
+            <div class="review-slide active">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">“Hade tandvärk hela natten. Ringde mitt i natten och fick direkt både svar och tid. Tanden fixades snabbt och nu känns allt mycket bättre. Väldigt nöjd med bemötandet och behandlingen.”</p>
+                <p class="review-name">– Milad I.</p>
+            </div>
+
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">“Professionell och omtänksam tandläkare som får en att känna sig trygg. Jag blev jättenöjd, tack så mycket”</p>
+                <p class="review-name">– Anas K.</p>
+            </div>
+
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">“Tandläkaren "Mohamed Jalbout" är fantastisk. Hjälpsam, trevlig och lagom priser”</p>
+                <p class="review-name">– Hadid M.</p>
+            </div>
+
+            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
         </div>
+    </section>
 
-        <div class="review-slide">
-            <div class="stars">★★★★★</div>
-            <p class="review-text">“Fantastisk personal! De förklarade varje steg och tog hänsyn till min tandläkarskräck. Jag kommer definitivt tillbaka.”</p>
-            <p class="review-name">– Marcus B.</p>
-        </div>
 
-        <div class="review-slide">
-            <div class="stars">★★★★★</div>
-            <p class="review-text">“Kliniken är fräsch, modern och väldigt tillgänglig. Jag fick hjälp med akut tandvärk samma dag. Suverän service!”</p>
-            <p class="review-name">– Sara K.</p>
-        </div>
 
-        <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-</section>
 
     <div id="footer-placeholder"></div>
 </section>

@@ -1,0 +1,347 @@
+/* ===== ATC Slim Header (namespacad) ===== */
+:root{
+  --atc-blue:#0b4a78;
+  --atc-blue-600:#0a3f66;
+  --atc-accent:#007ACC;
+  --atc-text:#1d2a34;
+  --atc-muted:#6a7b86;
+}
+
+/* Reset som hindrar vita kanter från body/wrappers */
+html, body { margin:0; }
+html { overflow-x:hidden; }
+
+/* Hjälp: säker box-modell i headern */
+.atc-header, .atc-header * { box-sizing: border-box; }
+
+/* ===== Header wrapper ===== */
+.atc-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+  /* Full-bleed: bryt ur eventuella wrappers med sidopadding */
+  width: auto;
+  max-width: none;
+  border-radius: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ===== Top band (recensioner + öppettider) ===== */
+.atc-header__top{
+  display:flex;
+  gap:16px;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 18px;
+  background:#fafafa;
+  border-bottom:1px solid #eee;
+  font:500 14px/1.4 system-ui,Arial,sans-serif;
+  color:var(--atc-text);
+}
+.atc-top__left,.atc-top__right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.atc-g{width:22px;height:22px;display:block}
+.atc-rating strong{font-weight:700}
+.atc-stars{letter-spacing:2px;color:#f5a623;font-size:14px}
+
+/* ===== Main bar ===== */
+.atc-header__bar{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:10px 18px;
+  background:#fff;
+
+  /* viktigt så dropdownen inte klipps! */
+  overflow: visible;
+}
+.atc-brand{display:flex;align-items:center}
+.atc-brand__logo{height:75px;max-width:200px;object-fit:contain}
+
+/* ===== Nav ===== */
+.atc-nav{margin-left:auto}
+.atc-nav__list{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.atc-nav__list a{color:var(--atc-blue);text-decoration:none;font-weight:600}
+.atc-nav__list a:hover{color:var(--atc-accent)}
+
+/* ===== Dropdown ===== */
+.atc-dropdown{position:relative}
+.atc-dropdown__btn{
+  background:transparent;border:0;color:var(--atc-blue);font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;position:relative;padding:6px 2px;
+}
+.atc-dropdown__btn:hover{color:var(--atc-accent)}
+.atc-dropdown__btn::after{
+  content:"▾"; font-size:.85em; line-height:1; opacity:.9; transition:transform .18s ease;
+}
+.atc-dropdown.open .atc-dropdown__btn::after{ transform:rotate(180deg); }
+
+.atc-dropdown__menu{
+  position:absolute; left:0; min-width:220px;
+  background:#fff; border:1px solid #e6eef5; border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  padding:8px 0; list-style:none; display:none; z-index:1001
+}
+.atc-dropdown__menu a{display:block;padding:10px 14px;color:var(--atc-blue)}
+.atc-dropdown__menu a:hover{background:#f3f8fd}
+
+/* ===== CTA ===== */
+.atc-cta{display:flex;gap:10px;margin-left:16px}
+.atc-cta__tel{padding:8px 12px;border-radius:999px;border:1px solid #d7e3ef;color:var(--atc-blue);text-decoration:none;font-weight:700}
+.atc-cta__book{padding:9px 16px;border-radius:999px;background:var(--atc-accent);color:#fff;text-decoration:none;font-weight:800}
+.atc-cta__book:hover{background:#005f99}
+
+/* ===== Burger (hidden desktop) ===== */
+.atc-nav__toggle{display:none;position:relative;width:38px;height:38px;border:0;background:#f1f5f9;border-radius:10px}
+.atc-burger, .atc-burger:before, .atc-burger:after{
+  position:absolute;left:8px;right:8px;height:2px;background:#0b2840;content:"";transition:.2s
+}
+.atc-burger{top:18px}
+.atc-burger:before{top:-8px}
+.atc-burger:after{top:8px}
+
+/* ===== Open states ===== */
+.atc-dropdown.open .atc-dropdown__menu{display:block}
+.atc-nav__toggle[aria-expanded="true"] .atc-burger{background:transparent}
+.atc-nav__toggle[aria-expanded="true"] .atc-burger:before{transform:translateY(8px) rotate(45deg)}
+.atc-nav__toggle[aria-expanded="true"] .atc-burger:after{transform:translateY(-8px) rotate(-45deg)}
+
+/* ===== Mobile ===== */
+@media (max-width: 900px){
+  .atc-header__top{font-size:13px;padding:6px 12px}
+  .atc-brand__logo{height:40px}
+  .atc-nav__toggle{display:block;margin-left:auto}
+  .atc-nav{
+    position:fixed;
+    inset:64px 0 auto 0;
+    background:#fff;
+    border-top:1px solid #eef3f8;
+    padding:12px 16px;
+    display:none
+  }
+  .atc-nav.open{display:block}
+  .atc-nav__list{flex-direction:column;gap:8px}
+  .atc-dropdown__menu{position:static;display:none;border:0;border-radius:0;box-shadow:none;padding:0}
+  .atc-cta{margin-left:0}
+  .atc-header__bar{gap:10px}
+  .atc-header{box-shadow:0 1px 6px rgba(0,0,0,.06)}
+}
+
+/* ===== Dölj legacy-header under test ===== */
+.atc-hide-legacy .custom-header { display: none !important; }
+.atc-hide-legacy #header-placeholder { display: none; }
+
+/* =========================================================
+   BLÅTT TEMA (matchar sajtens blå färger) – override
+   ========================================================= */
+.atc-header__top{
+  background: var(--atc-blue-600);
+  color:#fff;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.atc-top__left .atc-rating,
+.atc-top__right span { color:#fff; }
+.atc-g{ filter: brightness(0) invert(1); }
+.atc-stars{ color:#ffd166; }
+
+.atc-header__bar{
+  background: var(--atc-blue);
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+}
+
+.atc-nav__list a,
+.atc-dropdown__btn{ color:#fff; }
+.atc-nav__list a:hover,
+.atc-dropdown__btn:hover{ color:rgba(255,255,255,.85); }
+
+.atc-cta__tel{ border-color: rgba(255,255,255,.45); color:#fff; }
+.atc-cta__tel:hover{ background: rgba(255,255,255,.08); }
+.atc-cta__book{ background:#fff; color: var(--atc-blue); }
+.atc-cta__book:hover{ background:#f1f5f9; }
+
+.atc-nav__toggle{ background: rgba(255,255,255,.12); }
+.atc-burger, .atc-burger:before, .atc-burger:after{ background:#fff; }
+
+/* Mobil: vit panel + blå länkar (bättre läsbarhet) */
+@media (max-width: 900px){
+  .atc-nav{ background:#fff; border-top: 1px solid #eef3f8; }
+  .atc-nav__list a, .atc-dropdown__btn{ color: var(--atc-blue); }
+  .atc-dropdown__menu a:hover{ background:#f3f8fd; }
+}
+
+/* Neutralisera global "header { padding:20px }" från styles.css */
+header.atc-header,
+.atc-header{
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: initial !important;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Placering: Logo + Meny till vänster, CTA till höger */
+.atc-header__bar { display:flex; align-items:center; }
+.atc-brand{ order:0; }
+.atc-nav{ order:1; margin-left:16px; }
+.atc-cta{ order:2; margin-left:auto; }
+@media (max-width: 900px){
+  .atc-nav__toggle{ order:3; margin-left:auto; }
+  .atc-nav{ order:4; }
+}
+
+/* Recensionslänk */
+.atc-reviews{
+  text-decoration:none; color:inherit; padding:6px 8px; border-radius:8px;
+  transition:background-color .15s ease, box-shadow .15s ease;
+}
+.atc-reviews:hover{ background: rgba(255,255,255,.08); }
+.atc-reviews:focus-visible{ outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
+
+/* Badge: Akuttider dygnet runt */
+.atc-badge{ display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px;
+  font:700 12px/1.2 system-ui, Arial, sans-serif; text-decoration:none; white-space:nowrap; }
+.atc-badge--urgent{ color:#fff; background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.35); }
+.atc-badge--urgent:hover{ background: rgba(255,255,255,.2); }
+.atc-top__right .atc-badge{ margin-left:12px; }
+@media (max-width: 900px){ .atc-top__right{ row-gap:6px; } .atc-top__right .atc-badge{ margin-left:0; } }
+
+/* === Desktop: blå dropdown och stabil hover utan klick === */
+@media (min-width: 901px){
+  /* 0) Gör en osynlig "hover-brygga" mellan knappen och panelen */
+  .atc-dropdown::after{
+    content:""; position:absolute; left:0; right:0; top:100%; height:10px;
+  }
+  /* 1) Panelens position matchar bryggans höjd så ingen verklig lucka finns */
+  .atc-dropdown__menu{
+    top: calc(100% + 10px);      /* exakt samma 10px som bryggan ovan */
+    margin-top: 0; transform: none;
+    background: var(--atc-blue-600);
+    border: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  }
+  .atc-dropdown__menu a{ color:#fff; }
+  .atc-dropdown__menu a:hover{ background: rgba(255,255,255,.10); }
+
+  /* 2) Öppna på hover – håller sig öppen när man går ned i listan */
+  .atc-dropdown:hover .atc-dropdown__menu{ display:block; }
+}
+
+
+/* ===== Mobilmeny: helskärm, blå bakgrund, vertikal lista, X-stäng ===== */
+@media (max-width: 900px){
+  .atc-nav{
+    position: fixed;
+    inset: 0;                    /* täck hela skärmen */
+    background: var(--atc-blue); /* blå som headern */
+    color: #fff;
+    display: none;
+    overflow: auto;
+    padding: 72px 20px 24px;     /* luft ovanför länkar */
+    z-index: 1200;               /* över allt annat */
+  }
+  .atc-nav.open{ display:block; }
+
+  /* X-stängknappen uppe till höger */
+  .atc-nav__close{
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .atc-nav__close::before,
+  .atc-nav__close::after{
+    content:"";
+    position:absolute; left:9px; right:9px; top:19px; height:2px; background:#fff;
+  }
+  .atc-nav__close::before{ transform: rotate(45deg); }
+  .atc-nav__close::after{  transform: rotate(-45deg); }
+
+  /* Länklistan – vertikal, tydliga rader */
+  .atc-nav__list{
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .atc-nav__list > li > a,
+  .atc-dropdown__btn{
+    display:block;
+    padding: 14px 4px;
+    font-size: 18px;
+    color:#fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .atc-nav__list > li > a:hover,
+  .atc-dropdown__btn:hover{ color: rgba(255,255,255,.9); }
+
+  /* Dropdown inne i mobilmenyn (fälls i flödet) */
+  .atc-dropdown__btn{ width:100%; text-align:left; }
+  .atc-dropdown__btn::after{ content:"▾"; margin-left:8px; opacity:.9; }
+  .atc-dropdown.open .atc-dropdown__btn::after{ transform:rotate(180deg); }
+
+  .atc-dropdown__menu{
+    position: static;
+    display: none;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    box-shadow: none;
+    margin: 8px 0 12px;
+    padding: 6px 0;
+  }
+  .atc-dropdown.open .atc-dropdown__menu{ display:block; }
+
+  .atc-dropdown__menu a{
+    color:#fff;
+    padding:10px 12px;
+  }
+  .atc-dropdown__menu a:hover{
+    background: rgba(255,255,255,.08);
+  }
+
+  /* CTA-knappar i overlay får lite luft uppåt */
+  .atc-cta{ margin-top: 16px; }
+}
+
+
+/* Dölj mobilens X-knapp på desktop helt (orsakade "strecket" under Hem) */
+.atc-nav__close{
+  display: none !important;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Visa och styla X-knappen endast i mobilmenyn */
+@media (max-width: 900px){
+  .atc-nav__close{
+    display: block !important;
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .atc-nav__close::before,
+  .atc-nav__close::after{
+    content:"";
+    position:absolute; left:9px; right:9px; top:19px; height:2px; background:#fff;
+  }
+  .atc-nav__close::before{ transform: rotate(45deg); }
+  .atc-nav__close::after{  transform: rotate(-45deg); }
+}
+
+
+/* Ta bort invertering på Google-ikonen bredvid recensionerna */
+.atc-g{ filter: none !important; opacity: 1; }
